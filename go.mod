@@ -3,7 +3,7 @@ module scec-cli
 go 1.22.1
 
 require (
-	github.com/anchore/syft v1.0.1
+	github.com/anchore/syft v1.1.0
 	github.com/docker/buildx v0.13.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.30
