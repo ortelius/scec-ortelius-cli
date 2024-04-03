@@ -1,6 +1,6 @@
 module scec-cli
 
-go 1.22.1
+go 1.22.2
 
 require (
 	github.com/anchore/syft v1.1.0
