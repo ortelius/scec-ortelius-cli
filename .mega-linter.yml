@@ -19,3 +19,11 @@ DISABLE:
   - SPELL
 
 GO_GOLANGCI_LINT_CLI_LINT_MODE: project
+
+PRE_COMMANDS:
+  [
+    "command": "wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz",
+    "command": "rm -rf /usr/lib/go",
+    "command": "tar -xf go1.22.2.linux-amd64.tar.gz -C /usr/lib",
+    "command": "go version",
+  ]
