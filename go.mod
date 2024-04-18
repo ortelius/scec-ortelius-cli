@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/anchore/syft v1.2.0
-	github.com/docker/buildx v0.13.1
+	github.com/docker/buildx v0.14.0
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.30
 	github.com/pelletier/go-toml v1.9.5
