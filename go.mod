@@ -3,7 +3,7 @@ module scec-cli
 go 1.22.2
 
 require (
-	github.com/anchore/syft v1.3.0
+	github.com/anchore/syft v1.4.1
 	github.com/docker/buildx v0.14.0
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.30
@@ -24,7 +24,7 @@ require (
 	github.com/anchore/go-logger v0.0.0-20240217160628-ee28a485904f // indirect
 	github.com/anchore/go-struct-converter v0.0.0-20230627203149-c72ef8859ca9 // indirect
 	github.com/anchore/packageurl-go v0.1.1-0.20240312213626-055233e539b4 // indirect
-	github.com/anchore/stereoscope v0.0.3-0.20240423181235-8b297badafd5 // indirect
+	github.com/anchore/stereoscope v0.0.3-0.20240501181043-2e9894674185 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.26.1 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.27.11 // indirect
@@ -53,7 +53,7 @@ require (
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/cli v26.0.1+incompatible // indirect
 	github.com/docker/distribution v2.8.3+incompatible // indirect
-	github.com/docker/docker v26.1.0+incompatible // indirect
+	github.com/docker/docker v26.1.2+incompatible // indirect
 	github.com/docker/docker-credential-helpers v0.8.1 // indirect
 	github.com/docker/go v1.5.1-1.0.20160303222718-d30aec9fd63c // indirect
 	github.com/docker/go-connections v0.5.0 // indirect
