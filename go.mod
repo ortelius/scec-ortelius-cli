@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/anchore/syft v1.4.1
-	github.com/docker/buildx v0.14.0
+	github.com/docker/buildx v0.14.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.31
 	github.com/pelletier/go-toml v1.9.5
@@ -51,7 +51,7 @@ require (
 	github.com/containerd/ttrpc v1.2.3 // indirect
 	github.com/containerd/typeurl/v2 v2.1.1 // indirect
 	github.com/distribution/reference v0.6.0 // indirect
-	github.com/docker/cli v26.1.2+incompatible // indirect
+	github.com/docker/cli v26.1.3+incompatible // indirect
 	github.com/docker/distribution v2.8.3+incompatible // indirect
 	github.com/docker/docker v26.1.2+incompatible // indirect
 	github.com/docker/docker-credential-helpers v0.8.1 // indirect
