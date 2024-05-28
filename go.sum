@@ -76,8 +76,10 @@ github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
 github.com/anchore/clio v0.0.0-20240307182142-fb5fc4c9db3c h1:adhR3PBgGwEmcfLUt/IC9k3RPkyHcwcu6DDQjI0OPG0=
 github.com/anchore/clio v0.0.0-20240307182142-fb5fc4c9db3c/go.mod h1:XqIExxQkDvte2P1pgdcFVtw4p8TkJML+bZmKgEE8XXU=
+github.com/anchore/clio v0.0.0-20240522144804-d81e109008aa/go.mod h1:nD3H5uIvjxlfmakOBgtyFQbk5Zjp3l538kxfpHPslzI=
 github.com/anchore/fangs v0.0.0-20240301230121-42a116a277cb h1:RZj69axvSM21/6Zi4HGHYNAb2CE6/Nx58RkCH+4T5UE=
 github.com/anchore/fangs v0.0.0-20240301230121-42a116a277cb/go.mod h1:sVpRS2yNCw6tLVpvA1QSDVWTJVpCuAm8JNZgn4Sjz/k=
+github.com/anchore/fangs v0.0.0-20240508143433-f016b099950f/go.mod h1:sVpRS2yNCw6tLVpvA1QSDVWTJVpCuAm8JNZgn4Sjz/k=
 github.com/anchore/go-collections v0.0.0-20240216171411-9321230ce537 h1:GjNGuwK5jWjJMyVppBjYS54eOiiSNv4Ba869k4wh72Q=
 github.com/anchore/go-collections v0.0.0-20240216171411-9321230ce537/go.mod h1:1aiktV46ATCkuVg0O573ZrH56BUawTECPETbZyBcqT8=
 github.com/anchore/go-logger v0.0.0-20240217160628-ee28a485904f h1:qRQCz19ioRN2FtAct4j6Lb3Nl0VolFiuHtYMezGYBn0=
@@ -89,10 +91,14 @@ github.com/anchore/go-testutils v0.0.0-20200925183923-d5f45b0d3c04 h1:VzprUTpc0v
 github.com/anchore/go-testutils v0.0.0-20200925183923-d5f45b0d3c04/go.mod h1:6dK64g27Qi1qGQZ67gFmBFvEHScy0/C8qhQhNe5B5pQ=
 github.com/anchore/packageurl-go v0.1.1-0.20240312213626-055233e539b4 h1:SjemQ90fgflz39HG+VMkNfrpUVJpcFW6ZFA3TDXqzBM=
 github.com/anchore/packageurl-go v0.1.1-0.20240312213626-055233e539b4/go.mod h1:Blo6OgJNiYF41ufcgHKkbCKF2MDOMlrqhXv/ij6ocR4=
+github.com/anchore/packageurl-go v0.1.1-0.20240507183024-848e011fc24f h1:B/E9ixKNCasntpoch61NDaQyGPDXLEJlL+B9B/PbdbA=
+github.com/anchore/packageurl-go v0.1.1-0.20240507183024-848e011fc24f/go.mod h1:Blo6OgJNiYF41ufcgHKkbCKF2MDOMlrqhXv/ij6ocR4=
 github.com/anchore/stereoscope v0.0.3-0.20240501181043-2e9894674185 h1:SuViDJ27nZ+joGdKbAkxAlm7tYMt9NTxTZZ05po4hls=
 github.com/anchore/stereoscope v0.0.3-0.20240501181043-2e9894674185/go.mod h1:ckIamHiRMp8iBwWoTtE5Xkt9VQ5QC+6+O4VzwqyZr5Q=
 github.com/anchore/syft v1.4.1 h1:4ofNePf3vuEyNZZW7SDmTX9uR/vHYXtHkcLbo27Mtjs=
 github.com/anchore/syft v1.4.1/go.mod h1:2N75VGorI/18u2xSRAP/DEaZjjjVHtIXM+hFqSkfOTM=
+github.com/anchore/syft v1.5.0 h1:2gn3okyMnN4cMLv45ZWcKWxZo69Q8ffA1Q/zle/00ro=
+github.com/anchore/syft v1.5.0/go.mod h1:vVIHcx2hrJhNFxQH4nh1BkzSGG+K8JS6cIr1WJdADUk=
 github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883/go.mod h1:rCTlJbsFo29Kk6CurOXKm700vrz8f0KW0JNfpkRJY/8=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/andybalholm/brotli v1.1.0 h1:eLKJA0d02Lf0mVpIDgYnqXcUn0GqVmEFny3VuID1U3M=
@@ -248,6 +254,8 @@ github.com/docker/distribution v2.8.3+incompatible h1:AtKxIZ36LoNK51+Z6RpzLpddBi
 github.com/docker/distribution v2.8.3+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
 github.com/docker/docker v26.1.2+incompatible h1:UVX5ZOrrfTGZZYEP+ZDq3Xn9PdHNXaSYMFPDumMqG2k=
 github.com/docker/docker v26.1.2+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
+github.com/docker/docker v26.1.3+incompatible h1:lLCzRbrVZrljpVNobJu1J2FHk8V0s4BawoZippkc+xo=
+github.com/docker/docker v26.1.3+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
 github.com/docker/docker-credential-helpers v0.8.1 h1:j/eKUktUltBtMzKqmfLB0PAgqYyMHOp5vfsD1807oKo=
 github.com/docker/docker-credential-helpers v0.8.1/go.mod h1:P3ci7E3lwkZg6XiHdRKft1KckHiO9a2rNtyFbZ/ry9M=
 github.com/docker/go v1.5.1-1.0.20160303222718-d30aec9fd63c h1:lzqkGL9b3znc+ZUgi7FlLnqjQhcXxkNM/quxIjBVMD0=
