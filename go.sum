@@ -183,6 +183,8 @@ github.com/containerd/console v1.0.4 h1:F2g4+oChYvBTsASRTz8NP6iIAi97J3TtSAsLbIFn
 github.com/containerd/console v1.0.4/go.mod h1:YynlIjWYF8myEu6sdkwKIvGQq+cOckRm6So2avqoYAk=
 github.com/containerd/containerd v1.7.17 h1:KjNnn0+tAVQHAoaWRjmdak9WlvnFR/8rU1CHHy8Rm2A=
 github.com/containerd/containerd v1.7.17/go.mod h1:vK+hhT4TIv2uejlcDlbVIc8+h/BqtKLIyNrtCZol8lI=
+github.com/containerd/containerd v1.7.18 h1:jqjZTQNfXGoEaZdW1WwPU0RqSn1Bm2Ay/KJPUuO8nao=
+github.com/containerd/containerd v1.7.18/go.mod h1:IYEk9/IO6wAPUz2bCMVUbsfXjzw5UNP5fLz4PsUygQ4=
 github.com/containerd/continuity v0.4.3 h1:6HVkalIp+2u1ZLH1J/pYX2oBVXlJZvh1X1A7bEZ9Su8=
 github.com/containerd/continuity v0.4.3/go.mod h1:F6PTNCKepoxEaXLQp3wDAjygEnImnZ/7o4JzpodfroQ=
 github.com/containerd/errdefs v0.1.0 h1:m0wCRBiu1WJT/Fr+iOoQHMQS/eP5myQ8lCv4Dz5ZURM=
@@ -214,8 +216,12 @@ github.com/distribution/reference v0.6.0 h1:0IXCQ5g4/QMHHkarYzh5l+u8T3t73zM5Qvfr
 github.com/distribution/reference v0.6.0/go.mod h1:BbU0aIcezP1/5jX/8MP0YiH4SdvB5Y4f/wlDRiLyi3E=
 github.com/docker/buildx v0.14.1 h1:Pr3HdtHoDsCghlIExgGp0WOIgvbiViushOKIPUIyFI4=
 github.com/docker/buildx v0.14.1/go.mod h1:s6xxLYXZIWnkdYpSvxRmoqZTb1vViV9q2f+Hg8cWA3Y=
+github.com/docker/buildx v0.15.0 h1:PVq4IMnTvw1Sx0RKDWbfi2eTGawFd9CMBYnz9xat93Y=
+github.com/docker/buildx v0.15.0/go.mod h1:AdkB1RIcU4rfZ6mpw2PA2pOi1ppI9yvFXkVEpq5EmS4=
 github.com/docker/cli v26.1.3+incompatible h1:bUpXT/N0kDE3VUHI2r5VMsYQgi38kYuoC0oL9yt3lqc=
 github.com/docker/cli v26.1.3+incompatible/go.mod h1:JLrzqnKDaYBop7H2jaqPtU4hHvMKP+vjCwu2uszcLI8=
+github.com/docker/cli v26.1.4+incompatible h1:I8PHdc0MtxEADqYJZvhBrW9bo8gawKwwenxRM7/rLu8=
+github.com/docker/cli v26.1.4+incompatible/go.mod h1:JLrzqnKDaYBop7H2jaqPtU4hHvMKP+vjCwu2uszcLI8=
 github.com/docker/distribution v2.8.3+incompatible h1:AtKxIZ36LoNK51+Z6RpzLpddBirtxJnzDrHLEKxTAYk=
 github.com/docker/distribution v2.8.3+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
 github.com/docker/docker v26.1.3+incompatible h1:lLCzRbrVZrljpVNobJu1J2FHk8V0s4BawoZippkc+xo=
@@ -536,6 +542,8 @@ github.com/mkideal/expr v0.1.0/go.mod h1:vL1DsSb87ZtU6IEjOtUfxw98z0FQbzS8xlGtnPk
 github.com/mkideal/pkg v0.1.3/go.mod h1:u/enAxPeRcYSsxtu1NUifWSeOTU/31VsCaOPg54SMJ4=
 github.com/moby/buildkit v0.13.2 h1:nXNszM4qD9E7QtG7bFWPnDI1teUQFQglBzon/IU3SzI=
 github.com/moby/buildkit v0.13.2/go.mod h1:2cyVOv9NoHM7arphK9ZfHIWKn9YVZRFd1wXB8kKmEzY=
+github.com/moby/buildkit v0.14.0 h1:mHv2lFS8znLDRc4SMyM2B9tPjxWh2blMvr0H7ARquNM=
+github.com/moby/buildkit v0.14.0/go.mod h1:1XssG7cAqv5Bz1xcGMxJL123iCv5TYN4Z/qf647gfuk=
 github.com/moby/docker-image-spec v1.3.1 h1:jMKff3w6PgbfSa69GfNg+zN/XLhfXJGnEx3Nl2EsFP0=
 github.com/moby/docker-image-spec v1.3.1/go.mod h1:eKmb5VW8vQEh/BAr2yvVNvuiJuY6UIocYsFu/DxxRpo=
 github.com/moby/locker v1.0.1 h1:fOXqR41zeveg4fFODix+1Ch4mj/gT0NE1XJbp/epuBg=
