@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/anchore/syft v1.7.0
-	github.com/docker/buildx v0.15.0
+	github.com/docker/buildx v0.15.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.32
 	github.com/pelletier/go-toml v1.9.5
@@ -79,7 +79,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/moby/buildkit v0.14.0 // indirect
+	github.com/moby/buildkit v0.14.1 // indirect
 	github.com/moby/docker-image-spec v1.3.1 // indirect
 	github.com/moby/locker v1.0.1 // indirect
 	github.com/moby/patternmatcher v0.6.0 // indirect
