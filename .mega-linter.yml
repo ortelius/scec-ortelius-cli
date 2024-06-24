@@ -20,7 +20,7 @@ GO_GOLANGCI_LINT_ARGUMENTS:
   - "run"
   - "./..."
   - "--timeout"
-  - "10m"
+  - "20m"
   - "--fix"
   - "--show-stats"
 
