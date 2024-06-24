@@ -3,7 +3,7 @@ module github.com/ortelius/scec-cli
 go 1.22.2
 
 require (
-	github.com/anchore/syft v1.7.0
+	github.com/anchore/syft v1.8.0
 	github.com/docker/buildx v0.15.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.32
@@ -55,7 +55,7 @@ require (
 	github.com/felixge/fgprof v0.9.4 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.4 // indirect
-	github.com/github/go-spdx/v2 v2.2.0 // indirect
+	github.com/github/go-spdx/v2 v2.3.1 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
@@ -64,7 +64,7 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
-	github.com/google/go-containerregistry v0.19.1 // indirect
+	github.com/google/go-containerregistry v0.19.2 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
