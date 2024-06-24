@@ -1,4 +1,0 @@
-metadata.tools.000 bafkreigbjl7cd5bufvt7kb32tpvkxb5glf2pdmh3xbamrkmeoacblhzkey={"name":"syft","vendor":"anchore","version":"0.74.1"}
-metadata.tools bafkreicfvq3suvq2x57tjzffkqvseg6q5vmj6a7ltsshdrut2k6yiwp664=[bafkreigbjl7cd5bufvt7kb32tpvkxb5glf2pdmh3xbamrkmeoacblhzkey]
-metadata bafkreicygyenzw4jecaebaus2fgahdwh5fe7nzoprwnti7dtv6tv3kky7y={"timestamp":"2023-08-10T17:05:21-06:00","tools":"bafkreicfvq3suvq2x57tjzffkqvseg6q5vmj6a7ltsshdrut2k6yiwp664"}
-root bafkreieubpgbf36s57qwj5h2cxbdtwl24t3uciyb43ip3ru6347nbydm4u={"bomFormat":"CycloneDX","metadata":"bafkreicygyenzw4jecaebaus2fgahdwh5fe7nzoprwnti7dtv6tv3kky7y","serialNumber":"urn:uuid:219bd994-2245-466f-972e-5ac4098c5c7f","specVersion":"1.4","version":"1"}

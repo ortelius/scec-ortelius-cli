@@ -31,6 +31,68 @@ const (
 	ReadmeFile  int = 2 // ReadmeFile is used to read the Readme file
 )
 
+const (
+	baseName                   string = "BASENAME"
+	buildDate                  string = "BLDDATE"
+	buildID                    string = "BUILDID"
+	buildNum                   string = "BUILDNUM"
+	buildURL                   string = "BUILDURL"
+	chart                      string = "CHART"
+	chartNamespace             string = "CHARTNAMESPACE"
+	chartRepo                  string = "CHARTREPO"
+	chartRepoURL               string = "CHARTREPOURL"
+	chartVersion               string = "CHARTVERSION"
+	discordChannel             string = "DISCORDCHANNEL"
+	dockerRepo                 string = "DOCKERREPO"
+	dockerSha                  string = "DOCKERSHA"
+	dockerTag                  string = "DOCKERTAG"
+	gitCommit2                 string = "GITCOMMIT"
+	gitRepo2                   string = "GITREPO"
+	gitTag2                    string = "GITTAG"
+	gitURL2                    string = "GITURL"
+	gitBranch                  string = "GIT_BRANCH"
+	gitBranchCreateCommit      string = "GIT_BRANCH_CREATE_COMMIT"
+	gitBranchCreateTimestamp   string = "GIT_BRANCH_CREATE_TIMESTAMP"
+	gitBranchParent            string = "GIT_BRANCH_PARENT"
+	gitCommit                  string = "GIT_COMMIT"
+	gitCommittersCnt           string = "GIT_COMMITTERS_CNT"
+	gitCommitAuthors           string = "GIT_COMMIT_AUTHORS"
+	gitCommitTimestamp         string = "GIT_COMMIT_TIMESTAMP"
+	gitContribPercentage       string = "GIT_CONTRIB_PERCENTAGE"
+	gitLinesAdded              string = "GIT_LINES_ADDED"
+	gitLinesDeleted            string = "GIT_LINES_DELETED"
+	gitLinesTotal              string = "GIT_LINES_TOTAL"
+	gitOrg                     string = "GIT_ORG"
+	gitPreviousComponentCommit string = "GIT_PREVIOUS_COMPONENT_COMMIT"
+	gitRepo                    string = "GIT_REPO"
+	gitRepoProject             string = "GIT_REPO_PROJECT"
+	gitSignedOffBy             string = "GIT_SIGNED_OFF_BY"
+	gitTag                     string = "GIT_TAG"
+	gitTotalCommittersCnt      string = "GIT_TOTAL_COMMITTERS_CNT"
+	gitURL                     string = "GIT_URL"
+	gitVerifyCommit            string = "GIT_VERIFY_COMMIT"
+	hipchatChannel             string = "HIPCHATCHANNEL"
+	pagerdutyBusinessURL       string = "PAGERDUTYBUSINESSURL"
+	pagerdutyURL               string = "PAGERDUTYURL"
+	repository                 string = "REPOSITORY"
+	serviceOwner               string = "SERVICEOWNER"
+	shortSha                   string = "SHORT_SHA"
+	slackChannel               string = "SLACKCHANNEL"
+)
+
+var licenseFiles = []string{"LICENSE", "LICENSE.md", "license", "license.md"}
+var swaggerFiles = []string{"swagger.yaml", "swagger.yml", "swagger.json", "openapi.json", "openapi.yaml", "openapi.yml"}
+var readmeFiles = []string{"README", "README.md", "readme", "readme.md"}
+
+func findExisingFile(filenames []string) string {
+	for _, filename := range filenames {
+		if _, err := os.Stat(filename); err == nil {
+			return filename
+		}
+	}
+	return ""
+}
+
 func getSBOMFromImage(imageRef string) string {
 
 	// Create a new context.
@@ -74,7 +136,7 @@ func getSBOMFromImage(imageRef string) string {
 
 	// Convert the SPDX SBOM ot CycloneDX SBOM
 	buf = new(bytes.Buffer)
-	cyclonedx.Encode(buf, *spdxSBOM)
+	_ = cyclonedx.Encode(buf, *spdxSBOM)
 	return buf.String()
 }
 
@@ -121,6 +183,8 @@ func resolveVars(val string, data map[interface{}]interface{}) string {
 }
 
 // getCompToml reads the component.toml file and assignes the key/values to the fields in the CompAttrs struct
+//
+//nolint:gocyclo
 func getCompToml(derivedAttrs map[string]string) (*model.CompAttrs, map[string]string) {
 	attrs := model.NewCompAttrs()
 	extraAttrs := make(map[string]string, 0)
@@ -132,103 +196,103 @@ func getCompToml(derivedAttrs map[string]string) (*model.CompAttrs, map[string]s
 		}
 
 		switch strings.ToUpper(k) {
-		case "BASENAME":
+		case baseName:
 			attrs.Basename = v
-		case "BLDDATE":
+		case buildDate:
 			t, _ := dateparse.ParseAny(v)
 			attrs.BuildDate = t
-		case "BUILDID":
+		case buildID:
 			attrs.BuildID = v
-		case "BUILDNUM":
+		case buildNum:
 			attrs.BuildNum = v
-		case "BUILDURL":
+		case buildURL:
 			attrs.BuildURL = v
-		case "CHART":
+		case chart:
 			attrs.Chart = v
-		case "CHARTNAMESPACE":
+		case chartNamespace:
 			attrs.ChartNamespace = v
-		case "CHARTREPO":
+		case chartRepo:
 			attrs.ChartRepo = v
-		case "CHARTREPOURL":
+		case chartRepoURL:
 			attrs.ChartRepoURL = v
-		case "CHARTVERSION":
+		case chartVersion:
 			attrs.ChartVersion = v
-		case "DISCORDCHANNEL":
+		case discordChannel:
 			attrs.DiscordChannel = v
-		case "DOCKERREPO":
+		case dockerRepo:
 			attrs.DockerRepo = v
-		case "DOCKERSHA":
+		case dockerSha:
 			attrs.DockerSha = v
-		case "DOCKERTAG":
+		case dockerTag:
 			attrs.DockerTag = v
-		case "SHORT_SHA":
+		case shortSha:
 			attrs.GitCommit = v
-		case "GIT_BRANCH":
+		case gitBranch:
 			attrs.GitBranch = v
-		case "GIT_BRANCH_PARENT":
+		case gitBranchParent:
 			attrs.GitBranchParent = v
-		case "GIT_BRANCH_CREATE_COMMIT":
+		case gitBranchCreateCommit:
 			attrs.GitBranchCreateCommit = v
-		case "GIT_BRANCH_CREATE_TIMESTAMP":
+		case gitBranchCreateTimestamp:
 			t, _ := dateparse.ParseAny(v)
 			attrs.GitBranchCreateTimestamp = t
-		case "GIT_COMMIT":
+		case gitCommit:
 			attrs.GitCommit = v
-		case "GITCOMMIT":
+		case gitCommit2:
 			attrs.GitCommit = v
-		case "GIT_COMMIT_AUTHORS":
+		case gitCommitAuthors:
 			attrs.GitCommitAuthors = v
-		case "GIT_COMMIT_TIMESTAMP":
+		case gitCommitTimestamp:
 			t, _ := dateparse.ParseAny(v)
 			attrs.GitCommitTimestamp = t
-		case "GIT_COMMITTERS_CNT":
+		case gitCommittersCnt:
 			attrs.GitCommittersCnt = v
-		case "GIT_CONTRIB_PERCENTAGE":
+		case gitContribPercentage:
 			attrs.GitContribPercentage = v
-		case "GIT_LINES_ADDED":
+		case gitLinesAdded:
 			attrs.GitLinesAdded = v
-		case "GIT_LINES_DELETED":
+		case gitLinesDeleted:
 			attrs.GitLinesDeleted = v
-		case "GIT_LINES_TOTAL":
+		case gitLinesTotal:
 			attrs.GitLinesTotal = v
-		case "GIT_ORG":
+		case gitOrg:
 			attrs.GitOrg = v
-		case "GIT_PREVIOUS_COMPONENT_COMMIT":
+		case gitPreviousComponentCommit:
 			attrs.GitPrevCompCommit = v
-		case "GIT_REPO_PROJECT":
+		case gitRepoProject:
 			attrs.GitRepoProject = v
-		case "GIT_REPO":
+		case gitRepo:
 			attrs.GitRepo = v
-		case "GITREPO":
+		case gitRepo2:
 			attrs.GitRepo = v
-		case "GIT_TAG":
+		case gitTag:
 			attrs.GitTag = v
-		case "GITTAG":
+		case gitTag2:
 			attrs.GitTag = v
-		case "GIT_TOTAL_COMMITTERS_CNT  ":
+		case gitTotalCommittersCnt:
 			attrs.GitTotalCommittersCnt = v
-		case "GIT_URL":
+		case gitURL:
 			attrs.GitURL = v
-		case "GITURL":
+		case gitURL2:
 			attrs.GitURL = v
-		case "GIT_VERIFY_COMMIT":
+		case gitVerifyCommit:
 			attrs.GitVerifyCommit = false
 			if v == "1" {
 				attrs.GitVerifyCommit = true
 			}
-		case "GIT_SIGNED_OFF_BY":
+		case gitSignedOffBy:
 			attrs.GitSignedOffBy = v
-		case "HIPCHATCHANNEL":
+		case hipchatChannel:
 			attrs.HipchatChannel = v
-		case "PAGERDUTYBUSINESSURL":
+		case pagerdutyBusinessURL:
 			attrs.PagerdutyBusinessURL = v
-		case "PAGERDUTYURL":
+		case pagerdutyURL:
 			attrs.PagerdutyURL = v
-		case "REPOSITORY":
+		case repository:
 			attrs.Repository = v
-		case "SERVICEOWNER":
+		case serviceOwner:
 			attrs.ServiceOwner.Name, attrs.ServiceOwner.Domain = makeName(v)
-		case "SLACKCHANNEL":
+		case slackChannel:
 			attrs.SlackChannel = v
 
 		}
@@ -257,50 +321,50 @@ func getCompToml(derivedAttrs map[string]string) (*model.CompAttrs, map[string]s
 				// Look for well known attributes from component.toml [Attributes] section and assign them
 				for a, b := range t {
 					switch strings.ToUpper(a) {
-					case "BLDDATE":
+					case buildDate:
 						t, _ := dateparse.ParseAny(resolveVars(b.(string), data))
 						attrs.BuildDate = t
-					case "BUILDID":
+					case buildID:
 						attrs.BuildID = resolveVars(b.(string), data)
-					case "BUILDURL":
+					case buildURL:
 						attrs.BuildURL = resolveVars(b.(string), data)
-					case "CHART":
+					case chart:
 						attrs.Chart = resolveVars(b.(string), data)
-					case "CHARTNAMESPACE":
+					case chartNamespace:
 						attrs.ChartNamespace = resolveVars(b.(string), data)
-					case "CHARTREPO":
+					case chartRepo:
 						attrs.ChartRepo = resolveVars(b.(string), data)
-					case "CHARTREPOURL":
+					case chartRepoURL:
 						attrs.ChartRepoURL = resolveVars(b.(string), data)
-					case "CHARTVERSION":
+					case chartVersion:
 						attrs.ChartVersion = resolveVars(b.(string), data)
-					case "DISCORDCHANNEL":
+					case discordChannel:
 						attrs.DiscordChannel = resolveVars(b.(string), data)
-					case "DOCKERREPO":
+					case dockerRepo:
 						attrs.DockerRepo = resolveVars(b.(string), data)
-					case "DOCKERSHA":
+					case dockerSha:
 						attrs.DockerSha = resolveVars(b.(string), data)
-					case "DOCKERTAG":
+					case dockerTag:
 						attrs.DockerTag = resolveVars(b.(string), data)
-					case "GITCOMMIt":
+					case gitCommit:
 						attrs.GitCommit = resolveVars(b.(string), data)
-					case "GITREPO":
+					case gitRepo:
 						attrs.GitRepo = resolveVars(b.(string), data)
-					case "GITTAG":
+					case gitTag:
 						attrs.GitTag = resolveVars(b.(string), data)
-					case "GITURL":
+					case gitURL:
 						attrs.GitURL = resolveVars(b.(string), data)
-					case "HIPCHATCHANNEL":
+					case hipchatChannel:
 						attrs.HipchatChannel = resolveVars(b.(string), data)
-					case "PAGERDUTYBUSINESSURL":
+					case pagerdutyBusinessURL:
 						attrs.PagerdutyBusinessURL = resolveVars(b.(string), data)
-					case "PAGERDUTYURL":
+					case pagerdutyURL:
 						attrs.PagerdutyURL = resolveVars(b.(string), data)
-					case "REPOSITORY":
+					case repository:
 						attrs.Repository = resolveVars(b.(string), data)
-					case "SERVICEOWNER":
+					case serviceOwner:
 						attrs.ServiceOwner.Name, attrs.ServiceOwner.Domain = makeName(resolveVars(b.(string), data))
-					case "SLACKCHANNEL":
+					case slackChannel:
 						attrs.SlackChannel = resolveVars(b.(string), data)
 					default:
 						extraAttrs[strings.ToUpper(a)] = resolveVars(b.(string), data)
@@ -311,50 +375,50 @@ func getCompToml(derivedAttrs map[string]string) (*model.CompAttrs, map[string]s
 
 			// Look for well known attributes at the root of the component.toml and assign them
 			switch strings.ToUpper(k.(string)) {
-			case "BLDDATE":
+			case buildDate:
 				t, _ := dateparse.ParseAny(resolveVars(v.(string), data))
 				attrs.BuildDate = t
-			case "BUILDID":
+			case buildID:
 				attrs.BuildID = resolveVars(v.(string), data)
-			case "BUILDURL":
+			case buildURL:
 				attrs.BuildURL = resolveVars(v.(string), data)
-			case "CHART":
+			case chart:
 				attrs.Chart = resolveVars(v.(string), data)
-			case "CHARTNAMESPACE":
+			case chartNamespace:
 				attrs.ChartNamespace = resolveVars(v.(string), data)
-			case "CHARTREPO":
+			case chartRepo:
 				attrs.ChartRepo = resolveVars(v.(string), data)
-			case "CHARTREPOURL":
+			case chartRepoURL:
 				attrs.ChartRepoURL = resolveVars(v.(string), data)
-			case "CHARTVERSION":
+			case chartVersion:
 				attrs.ChartVersion = resolveVars(v.(string), data)
-			case "DISCORDCHANNEL":
+			case discordChannel:
 				attrs.DiscordChannel = resolveVars(v.(string), data)
-			case "DOCKERREPO":
+			case dockerRepo:
 				attrs.DockerRepo = resolveVars(v.(string), data)
-			case "DOCKERSHA":
+			case dockerSha:
 				attrs.DockerSha = resolveVars(v.(string), data)
-			case "DOCKERTAG":
+			case dockerTag:
 				attrs.DockerTag = resolveVars(v.(string), data)
-			case "GITCOMMIt":
+			case gitCommit:
 				attrs.GitCommit = resolveVars(v.(string), data)
-			case "GITREPO":
+			case gitRepo:
 				attrs.GitRepo = resolveVars(v.(string), data)
-			case "GITTAG":
+			case gitTag:
 				attrs.GitTag = resolveVars(v.(string), data)
-			case "GITURL":
+			case gitURL:
 				attrs.GitURL = resolveVars(v.(string), data)
-			case "HIPCHATCHANNEL":
+			case hipchatChannel:
 				attrs.HipchatChannel = resolveVars(v.(string), data)
-			case "PAGERDUTYBUSINESSURL":
+			case pagerdutyBusinessURL:
 				attrs.PagerdutyBusinessURL = resolveVars(v.(string), data)
-			case "PAGERDUTYURL":
+			case pagerdutyURL:
 				attrs.PagerdutyURL = resolveVars(v.(string), data)
-			case "REPOSITORY":
+			case repository:
 				attrs.Repository = resolveVars(v.(string), data)
-			case "SERVICEOWNER":
+			case serviceOwner:
 				attrs.ServiceOwner.Name, attrs.ServiceOwner.Domain = makeName(resolveVars(v.(string), data))
-			case "SLACKCHANNEL":
+			case slackChannel:
 				attrs.SlackChannel = resolveVars(v.(string), data)
 			default:
 				extraAttrs[strings.ToUpper(k.(string))] = resolveVars(v.(string), data)
@@ -370,40 +434,13 @@ func gatherFile(filetype int) []string {
 	lines := make([]string, 0)
 	filename := ""
 
-	if filetype == LicenseFile {
-		if _, err := os.Stat("LICENSE"); err == nil {
-			filename = "LICENSE"
-		} else if _, err := os.Stat("LICENSE.md"); err == nil {
-			filename = "LICENSE.md"
-		} else if _, err := os.Stat("license"); err == nil {
-			filename = "license"
-		} else if _, err := os.Stat("license.md"); err == nil {
-			filename = "license.md"
-		}
-	} else if filetype == SwaggerFile {
-		if _, err := os.Stat("swagger.yaml"); err == nil {
-			filename = "swagger.yaml"
-		} else if _, err := os.Stat("swagger.yml"); err == nil {
-			filename = "swagger.yml"
-		} else if _, err := os.Stat("swagger.json"); err == nil {
-			filename = "swagger.json"
-		} else if _, err := os.Stat("openapi.json"); err == nil {
-			filename = "openapi.json"
-		} else if _, err := os.Stat("openapi.yaml"); err == nil {
-			filename = "openapi.yaml"
-		} else if _, err := os.Stat("openapi.yml"); err == nil {
-			filename = "openapi.yml"
-		}
-	} else if filetype == ReadmeFile {
-		if _, err := os.Stat("README"); err == nil {
-			filename = "README"
-		} else if _, err := os.Stat("README.md"); err == nil {
-			filename = "README.md"
-		} else if _, err := os.Stat("readme"); err == nil {
-			filename = "readme"
-		} else if _, err := os.Stat("readme.md"); err == nil {
-			filename = "readme.md"
-		}
+	switch filetype {
+	case LicenseFile:
+		filename = findExisingFile(licenseFiles)
+	case SwaggerFile:
+		filename = findExisingFile(swaggerFiles)
+	case ReadmeFile:
+		filename = findExisingFile(readmeFiles)
 	}
 
 	if len(filename) > 0 {
@@ -521,13 +558,13 @@ func makeName(name string) (string, *model.Domain) {
 }
 
 // gatherEvidence collects data from the component.toml and git repo for the component version
-func gatherEvidence(Userid string, Password string, SBOM string) {
+func gatherEvidence(userID string, password string, sbom string) {
 
-	fmt.Printf("%s\n", Password)
+	fmt.Printf("%s\n", password)
 
 	user := model.NewUser()
 	createTime := time.Now().UTC()
-	user.Name, user.Domain = makeName(Userid)
+	user.Name, user.Domain = makeName(userID)
 
 	license := model.NewLicense()
 	license.Content = gatherFile(LicenseFile)
@@ -566,15 +603,15 @@ func gatherEvidence(Userid string, Password string, SBOM string) {
 	compver.Creator = user
 	compver.License = license
 	compver.Name, compver.Domain = makeName(compname)
-	compver.Owner.Name, compver.Owner.Domain = makeName(Userid)
+	compver.Owner.Name, compver.Owner.Domain = makeName(userID)
 	compver.ParentKey = compbaseversion
 	compver.Readme = readme
 	compver.Swagger = swagger
 
 	client := resty.New()
 
-	if _, err := os.Stat(SBOM); err == nil {
-		if data, err := os.ReadFile(SBOM); err == nil {
+	if _, err := os.Stat(sbom); err == nil {
+		if data, err := os.ReadFile(sbom); err == nil {
 			sbom := model.NewSBOM()
 			sbom.Content = json.RawMessage(data)
 
@@ -661,7 +698,7 @@ func gatherEvidence(Userid string, Password string, SBOM string) {
 func main() {
 	type argT struct {
 		cli.Helper
-		Userid   string `cli:"*user" usage:"User id (required)"`
+		UserID   string `cli:"*user" usage:"User id (required)"`
 		Password string `cli:"*pass" usage:"User password (required)"`
 		SBOM     string `cli:"sbom" usage:"CycloneDX Json Filename"`
 	}
@@ -669,7 +706,7 @@ func main() {
 	os.Exit(cli.Run(new(argT), func(ctx *cli.Context) error {
 		argv := ctx.Argv().(*argT)
 
-		gatherEvidence(argv.Userid, argv.Password, argv.SBOM)
+		gatherEvidence(argv.UserID, argv.Password, argv.SBOM)
 		return nil
 	}))
 }
