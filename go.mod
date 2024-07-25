@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/anchore/syft v1.9.0
-	github.com/docker/buildx v0.16.1
+	github.com/docker/buildx v0.16.2
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.32
 	github.com/pelletier/go-toml v1.9.5
@@ -59,7 +59,7 @@ require (
 	github.com/github/go-spdx/v2 v2.3.1 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
-	github.com/gofrs/flock v0.12.0 // indirect
+	github.com/gofrs/flock v0.12.1 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
@@ -80,7 +80,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/hashstructure/v2 v2.0.2 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/moby/buildkit v0.15.0 // indirect
+	github.com/moby/buildkit v0.15.1 // indirect
 	github.com/moby/docker-image-spec v1.3.1 // indirect
 	github.com/moby/locker v1.0.1 // indirect
 	github.com/moby/patternmatcher v0.6.0 // indirect
