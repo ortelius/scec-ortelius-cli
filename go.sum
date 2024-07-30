@@ -92,6 +92,8 @@ github.com/anchore/stereoscope v0.0.3-0.20240501181043-2e9894674185 h1:SuViDJ27n
 github.com/anchore/stereoscope v0.0.3-0.20240501181043-2e9894674185/go.mod h1:ckIamHiRMp8iBwWoTtE5Xkt9VQ5QC+6+O4VzwqyZr5Q=
 github.com/anchore/stereoscope v0.0.3-0.20240705165118-e46739e21796 h1:mb2i23zBKaSloS4RHMwBCKTCB3X5HnObcRvjxrvvMr8=
 github.com/anchore/stereoscope v0.0.3-0.20240705165118-e46739e21796/go.mod h1:6r8piaIGsYZuVkFw+fAXYtEGFI58dZuni/jNdvK+IxQ=
+github.com/anchore/stereoscope v0.0.3-0.20240725180315-50ce3be7aa1f h1:xuBvotcht1Ns8IdaC4UuYV1U8MFln9c5ELeo5bzDEO8=
+github.com/anchore/stereoscope v0.0.3-0.20240725180315-50ce3be7aa1f/go.mod h1:DcQdMes8SwpFli3rDH0v+Vd9qU9Jariq7JSHNJV5X/A=
 github.com/anchore/syft v1.5.0 h1:2gn3okyMnN4cMLv45ZWcKWxZo69Q8ffA1Q/zle/00ro=
 github.com/anchore/syft v1.5.0/go.mod h1:vVIHcx2hrJhNFxQH4nh1BkzSGG+K8JS6cIr1WJdADUk=
 github.com/anchore/syft v1.6.0 h1:HSS8oPHkUJAgTudLAZiWA2ixMiZBRUzUFErhXcF66H8=
@@ -102,6 +104,8 @@ github.com/anchore/syft v1.8.0 h1:J4QSQEYWdT/B62O+zh+m6hceS7fZd18zcO+Ov/rDvYw=
 github.com/anchore/syft v1.8.0/go.mod h1:8aanszd+QYEmhRIUxARXjXpVsgspsIGkPJp7a82C8P0=
 github.com/anchore/syft v1.9.0 h1:HIhUm+MOSJyeU1NDY/8SZd8UZMU8F5u1yzH12p5/bEU=
 github.com/anchore/syft v1.9.0/go.mod h1:8JxmQqxnBNdYv70uDcGJUiRwz5aIaJOJnz+sR9jV+JY=
+github.com/anchore/syft v1.10.0 h1:zZ8BWhrajaIIRyFe7zj3hWASEdeo/2kYUfEx7c9twZs=
+github.com/anchore/syft v1.10.0/go.mod h1:+i4dtOhJc9o+t7o8TKwsIkOeCQKgRaDk7N8YqwhsU10=
 github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883/go.mod h1:rCTlJbsFo29Kk6CurOXKm700vrz8f0KW0JNfpkRJY/8=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/andybalholm/brotli v1.1.0 h1:eLKJA0d02Lf0mVpIDgYnqXcUn0GqVmEFny3VuID1U3M=
@@ -278,6 +282,7 @@ github.com/docker/docker v26.1.4+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bc
 github.com/docker/docker v27.0.0+incompatible h1:JRugTYuelmWlW0M3jakcIadDx2HUoUO6+Tf2C5jVfwA=
 github.com/docker/docker v27.0.0+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
 github.com/docker/docker v27.0.3+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
+github.com/docker/docker v27.1.1+incompatible/go.mod h1:eEKB0N0r5NX/I1kEveEz05bcu8tLC/8azJZsviup8Sk=
 github.com/docker/docker-credential-helpers v0.8.2 h1:bX3YxiGzFP5sOXWc3bTPEXdEaZSeVMrFgOr3T+zrFAo=
 github.com/docker/docker-credential-helpers v0.8.2/go.mod h1:P3ci7E3lwkZg6XiHdRKft1KckHiO9a2rNtyFbZ/ry9M=
 github.com/docker/go-connections v0.5.0 h1:USnMq7hx7gwdVZq1L49hLXaFtUdTADjXGp+uj1Br63c=
@@ -416,6 +421,8 @@ github.com/google/go-containerregistry v0.19.2 h1:TannFKE1QSajsP6hPWb5oJNgKe1IKj
 github.com/google/go-containerregistry v0.19.2/go.mod h1:YCMFNQeeXeLF+dnhhWkqDItx/JSkH01j1Kis4PsjzFI=
 github.com/google/go-containerregistry v0.20.0 h1:wRqHpOeVh3DnenOrPy9xDOLdnLatiGuuNRVelR2gSbg=
 github.com/google/go-containerregistry v0.20.0/go.mod h1:YCMFNQeeXeLF+dnhhWkqDItx/JSkH01j1Kis4PsjzFI=
+github.com/google/go-containerregistry v0.20.1 h1:eTgx9QNYugV4DN5mz4U8hiAGTi1ybXn0TPi4Smd8du0=
+github.com/google/go-containerregistry v0.20.1/go.mod h1:YCMFNQeeXeLF+dnhhWkqDItx/JSkH01j1Kis4PsjzFI=
 github.com/google/gofuzz v1.0.0/go.mod h1:dBl0BpW6vV/+mYPU4Po3pmUjxk6FQPldtuIdl/M65Eg=
 github.com/google/martian v2.1.0+incompatible/go.mod h1:9I4somxYTbIHy5NJKHRl3wXiIaQGbYVAs8BPL6v8lEs=
 github.com/google/martian/v3 v3.0.0/go.mod h1:y5Zk1BBys9G+gd6Jrk0W3cC1+ELVxBWuIGO+w/tUAp0=
@@ -783,6 +790,8 @@ github.com/sylabs/sif/v2 v2.16.0/go.mod h1:d5TxgD/mhMUU3kWLmZmWJQ99Wg0asaTP0bq3e
 github.com/sylabs/sif/v2 v2.17.1/go.mod h1:XUGB6AQUXGkms3qPOPdevctT3lBLRLWZNWHVnt5HMKE=
 github.com/sylabs/squashfs v0.6.1 h1:4hgvHnD9JGlYWwT0bPYNt9zaz23mAV3Js+VEgQoRGYQ=
 github.com/sylabs/squashfs v0.6.1/go.mod h1:ZwpbPCj0ocIvMy2br6KZmix6Gzh6fsGQcCnydMF+Kx8=
+github.com/sylabs/squashfs v1.0.0 h1:xAyMS21ogglkuR5HaY55PCfqY3H32ma9GkasTYo28Zg=
+github.com/sylabs/squashfs v1.0.0/go.mod h1:rhWzvgefq1X+R+LZdts10hfMsTg3g74OfGunW8tvg/4=
 github.com/terminalstatic/go-xsd-validate v0.1.5 h1:RqpJnf6HGE2CB/lZB1A8BYguk8uRtcvYAPLCF15qguo=
 github.com/terminalstatic/go-xsd-validate v0.1.5/go.mod h1:18lsvYFofBflqCrvo1umpABZ99+GneNTw2kEEc8UPJw=
 github.com/therootcompany/xz v1.0.1 h1:CmOtsn1CbtmyYiusbfmhmkpAAETj0wBIH6kCYaX+xzw=
