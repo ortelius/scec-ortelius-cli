@@ -22,7 +22,7 @@ import (
 	resty "github.com/go-resty/resty/v2"
 	"github.com/mkideal/cli"
 	model "github.com/ortelius/scec-commons/model"
-	toml "github.com/pelletier/go-toml"
+	toml "github.com/pelletier/go-toml/v2"
 )
 
 const (
