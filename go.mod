@@ -6,7 +6,7 @@ require (
 	github.com/anchore/syft v1.10.0
 	github.com/docker/buildx v0.16.2
 	github.com/mkideal/cli v0.2.7
-	github.com/ortelius/scec-commons v0.1.33
+	github.com/ortelius/scec-commons v0.1.34
 	github.com/pelletier/go-toml/v2 v2.2.2
 )
 
