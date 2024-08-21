@@ -558,9 +558,7 @@ func makeName(name string) (string, *model.Domain) {
 }
 
 // gatherEvidence collects data from the component.toml and git repo for the component version
-func gatherEvidence(userID string, password string, sbom string) {
-
-	fmt.Printf("%s\n", password)
+func gatherEvidence(URL string, userID string, password string, sbom string) {
 
 	user := model.NewUser()
 	createTime := time.Now().UTC()
@@ -587,24 +585,15 @@ func gatherEvidence(userID string, password string, sbom string) {
 	compvariant := getWithDefault(tomlVars, "VARIANT", "")
 	compversion := getWithDefault(tomlVars, "VERSION", "")
 
-	compbaseversion := compname
-	if len(compvariant) == 0 {
-		compname += ";" + compvariant
-		compbaseversion = compname
-	}
-
-	if len(compversion) == 0 {
-		compname += ";" + compversion
-	}
-
 	compver.Attrs = attrs
 	compver.CompType = "docker"
 	compver.Created = createTime
 	compver.Creator = user
 	compver.License = license
 	compver.Name, compver.Domain = makeName(compname)
+	compver.Variant = compvariant
+	compver.Version = compversion
 	compver.Owner.Name, compver.Owner.Domain = makeName(userID)
-	compver.ParentKey = compbaseversion
 	compver.Readme = readme
 	compver.Swagger = swagger
 
@@ -620,7 +609,7 @@ func gatherEvidence(userID string, password string, sbom string) {
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post("http://localhost:8081/msapi/sbom")
+				Post(URL + "/msapi/sbom")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
@@ -648,7 +637,7 @@ func gatherEvidence(userID string, password string, sbom string) {
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post("http://localhost:8081/msapi/sbom")
+				Post(URL + "/msapi/sbom")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
@@ -667,7 +656,7 @@ func gatherEvidence(userID string, password string, sbom string) {
 			resp, err := client.R().
 				SetBody(provenance).
 				SetResult(&res).
-				Post("http://localhost:8081/msapi/provenance")
+				Post(URL + "/msapi/provenance")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
@@ -678,26 +667,23 @@ func gatherEvidence(userID string, password string, sbom string) {
 	}
 
 	// POST Struct, default is JSON content type. No need to set one
+	var res model.ResponseKey
 	resp, err := client.R().
 		SetBody(compver).
-		Post("http://localhost:8080/msapi/compver")
+		SetResult(&res).
+		Post(URL + "/msapi/compver")
 
 	fmt.Printf("%s=%v\n", resp, err)
+	fmt.Printf("KEY=%s\n", res.Key)
 
-	// b, err := json.Marshal(compver)
-	//
-	//	if err != nil {
-	//		fmt.Println(err)
-	//		return
-	//	}
-	//
-	// fmt.Println(string(b))
+	compver.Key = res.Key
 }
 
 // main is the entrypoint for the CLI.  Takes --user and --pass parameters
 func main() {
 	type argT struct {
 		cli.Helper
+		URL      string `cli:"*url" usage:"Console Url (required)"`
 		UserID   string `cli:"*user" usage:"User id (required)"`
 		Password string `cli:"*pass" usage:"User password (required)"`
 		SBOM     string `cli:"sbom" usage:"CycloneDX Json Filename"`
@@ -706,7 +692,7 @@ func main() {
 	os.Exit(cli.Run(new(argT), func(ctx *cli.Context) error {
 		argv := ctx.Argv().(*argT)
 
-		gatherEvidence(argv.UserID, argv.Password, argv.SBOM)
+		gatherEvidence(argv.URL, argv.UserID, argv.Password, argv.SBOM)
 		return nil
 	}))
 }
