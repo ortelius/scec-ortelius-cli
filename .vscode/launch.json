@@ -7,8 +7,11 @@
       "request": "launch",
       "mode": "auto",
       "program": "${fileDirname}",
-      "args": ["--user", "GLOBAL.Apache.foo", "--pass", "bar"],
-      "env": { "COMPNAME": "XXX" }
+      "args": ["--user", "GLOBAL.Apache.foo", "--url", "http://localhost"],
+      "cwd": "/Users/steve/git/scec/scec-deppkg",
+      "env": {"DOCKERREPO": "quay.io/ortelius/scec-deppkg",
+              "DOCKERTAG": "main-v11.0.768-g29c6df",
+              "DOCKERSHA": "sha256:7c005635a1781ae3437c3cfabfb86dc2575c401fd4f8459bd67470088fffd6b8"}
     }
   ]
 }

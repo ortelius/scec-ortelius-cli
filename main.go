@@ -101,17 +101,22 @@ func getSBOMFromImage(imageRef string) string {
 	// Create a new image inspect client.
 	var inspectClient *imagetools.Printer
 	var err error
+	var str string
+	buf := new(bytes.Buffer)
 
-	if inspectClient, err = imagetools.NewPrinter(ctx, imagetools.Opt{}, imageRef, "{{ json .SBOM.SPDX }}"); err != nil {
-		fmt.Printf("Could not load SBOM from image %s: %v", imageRef, err)
-		return ""
+	if inspectClient, err = imagetools.NewPrinter(ctx, imagetools.Opt{}, imageRef, "{{ json .SBOM.SPDX }}"); err == nil {
+		inspectClient.Print(false, buf)
+		str = buf.String()
 	}
 
-	buf := new(bytes.Buffer)
-	inspectClient.Print(false, buf)
+	buf = new(bytes.Buffer)
+	if str == "null" {
+		if inspectClient, err = imagetools.NewPrinter(ctx, imagetools.Opt{}, imageRef, "{{ json (index .SBOM \"linux/amd64\").SPDX}}"); err == nil {
+			inspectClient.Print(false, buf)
+			str = buf.String()
+		}
+	}
 
-	// Convert string to io.Reader
-	str := buf.String()
 	reader := strings.NewReader(str)
 
 	// Decode the image SPDX SBOM
@@ -481,7 +486,7 @@ func getDerived() map[string]string {
 
 	mapping["BLDDATE"] = time.Now().UTC().String()
 	mapping["SHORT_SHA"] = runGit("git log --oneline -n 1 | cut -d' '  -f1")
-	mapping["GIT_COMMIT"] = runGit("git log --oneline -n 1 | cut -d' '  -f1")
+	mapping["GIT_COMMIT"] = runGit("git log -n 1 --pretty=format:%H")
 	mapping["GIT_VERIFY_COMMIT"] = runGit("git verify-commit " + getWithDefault(mapping, "GIT_COMMIT", "") + " 2>&1 | grep -i 'Signature made' | wc -l | tr -d ' '")
 	mapping["GIT_SIGNED_OFF_BY"] = runGit("git log -1 " + getWithDefault(mapping, "GIT_COMMIT", "") + " | grep 'Signed-off-by:' | cut -d: -f2 | sed 's/^[ \t]*//;s/[ \t]*$//' | sed 's/&/\\&amp;/g; s/</\\&lt;/g; s/>/\\&gt;/g;'")
 	mapping["BUILDNUM"] = runGit("git log --oneline | wc -l | tr -d \" \"")
@@ -540,6 +545,32 @@ func getDerived() map[string]string {
 		mapping["COMPNAME"] = getWithDefault(mapping, "GIT_REPO_PROJECT", "")
 	}
 
+	var envKeys = map[string]bool{
+		buildID:              true,
+		buildURL:             true,
+		chart:                true,
+		chartNamespace:       true,
+		chartRepo:            true,
+		chartRepoURL:         true,
+		chartVersion:         true,
+		discordChannel:       true,
+		dockerRepo:           true,
+		dockerSha:            true,
+		dockerTag:            true,
+		hipchatChannel:       true,
+		pagerdutyBusinessURL: true,
+		pagerdutyURL:         true,
+		repository:           true,
+		serviceOwner:         true,
+		slackChannel:         true,
+	}
+
+	for k := range envKeys {
+		if val, found := os.LookupEnv(k); found {
+			mapping[k] = val
+		}
+	}
+
 	return mapping
 }
 
@@ -558,7 +589,7 @@ func makeName(name string) (string, *model.Domain) {
 }
 
 // gatherEvidence collects data from the component.toml and git repo for the component version
-func gatherEvidence(URL string, userID string, password string, sbom string) {
+func gatherEvidence(URL string, userID string, sbom string) {
 
 	user := model.NewUser()
 	createTime := time.Now().UTC()
@@ -589,39 +620,51 @@ func gatherEvidence(URL string, userID string, password string, sbom string) {
 	compver.CompType = "docker"
 	compver.Created = createTime
 	compver.Creator = user
-	compver.License = license
 	compver.Name, compver.Domain = makeName(compname)
 	compver.Variant = compvariant
 	compver.Version = compversion
 	compver.Owner.Name, compver.Owner.Domain = makeName(userID)
-	compver.Readme = readme
-	compver.Swagger = swagger
 
 	client := resty.New()
+
+	// POST compver and get the compid return
+	// The compid will be used in the License, Swagger, Readme and SBOM
+	// to associate the component version to those objects
+
+	var res model.ResponseKey
+	resp, err := client.R().
+		SetBody(compver).
+		SetResult(&res).
+		Post(URL + ":8080/msapi/compver")
+
+	fmt.Printf("%s=%v\n", resp, err)
+	fmt.Printf("compid=%s\n", res.Key)
+	compver.Key = res.Key
 
 	if _, err := os.Stat(sbom); err == nil {
 		if data, err := os.ReadFile(sbom); err == nil {
 			sbom := model.NewSBOM()
 			sbom.Content = json.RawMessage(data)
+			sbom.Key = compver.Key
 
-			// POST Struct, default is JSON content type. No need to set one
-			var res model.ResponseKey
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post(URL + "/msapi/sbom")
+				Post(URL + ":8081/msapi/sbom")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
-
-			compver.SBOMKey = res.Key
 		}
 	}
 
 	imageRef := ""
 	if len(attrs.DockerRepo) > 0 {
 		if len(attrs.DockerSha) > 0 {
-			imageRef = fmt.Sprintf("%s@sha256:%s", attrs.DockerRepo, attrs.DockerSha)
+			if strings.Contains(attrs.DockerSha, ":") {
+				imageRef = fmt.Sprintf("%s@%s", attrs.DockerRepo, attrs.DockerSha)
+			} else {
+				imageRef = fmt.Sprintf("%s@sha256:%s", attrs.DockerRepo, attrs.DockerSha)
+			}
 		} else if len(attrs.DockerTag) > 0 {
 			imageRef = fmt.Sprintf("%s:%s", attrs.DockerRepo, attrs.DockerTag)
 		}
@@ -631,68 +674,77 @@ func gatherEvidence(URL string, userID string, password string, sbom string) {
 		if len(sbomString) > 0 {
 			sbom := model.NewSBOM()
 			sbom.Content = json.RawMessage(sbomString)
+			sbom.Key = compver.Key
 
-			// POST Struct, default is JSON content type. No need to set one
 			var res model.ResponseKey
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post(URL + "/msapi/sbom")
+				Post(URL + ":8081/msapi/package")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
-
-			compver.SBOMKey = res.Key
 		}
 
-		provenanceString := getProvenanceFromImage(imageRef)
+		// provenanceString := getProvenanceFromImage(imageRef)
 
-		if len(provenanceString) > 0 {
-			provenance := model.NewProvenance()
-			provenance.Content = json.RawMessage(provenanceString)
+		// if len(provenanceString) > 0 {
+		// 	provenance := model.NewProvenance()
+		// 	provenance.Content = json.RawMessage(provenanceString)
+		// 	provenance.Key = compver.Key
 
-			// POST Struct, default is JSON content type. No need to set one
-			var res model.ResponseKey
-			resp, err := client.R().
-				SetBody(provenance).
-				SetResult(&res).
-				Post(URL + "/msapi/provenance")
+		// 	// POST Struct, default is JSON content type. No need to set one
+		// 	var res model.ResponseKey
+		// 	resp, err := client.R().
+		// 		SetBody(provenance).
+		// 		SetResult(&res).
+		// 		Post(URL + "/msapi/provenance")
 
-			fmt.Printf("%s=%v\n", resp, err)
-			fmt.Printf("KEY=%s\n", res.Key)
-
-			compver.ProvenanceKey = res.Key
-		}
-
+		// 	fmt.Printf("%s=%v\n", resp, err)
+		// 	fmt.Printf("KEY=%s\n", res.Key)
+		// }
 	}
 
-	// POST Struct, default is JSON content type. No need to set one
-	var res model.ResponseKey
-	resp, err := client.R().
-		SetBody(compver).
+	resp, err = client.R().
+		SetBody(readme).
 		SetResult(&res).
-		Post(URL + "/msapi/compver")
+		Post(URL + ":8084/msapi/readme/" + compver.Key)
 
 	fmt.Printf("%s=%v\n", resp, err)
 	fmt.Printf("KEY=%s\n", res.Key)
 
-	compver.Key = res.Key
+	swagger.Key = compver.Key
+	resp, err = client.R().
+		SetBody(swagger).
+		SetResult(&res).
+		Post(URL + ":8084/msapi/swagger/" + compver.Key)
+
+	fmt.Printf("%s=%v\n", resp, err)
+	fmt.Printf("KEY=%s\n", res.Key)
+
+	license.Key = compver.Key
+	resp, err = client.R().
+		SetBody(license).
+		SetResult(&res).
+		Post(URL + ":8084/msapi/license/" + compver.Key)
+
+	fmt.Printf("%s=%v\n", resp, err)
+	fmt.Printf("KEY=%s\n", res.Key)
 }
 
 // main is the entrypoint for the CLI.  Takes --user and --pass parameters
 func main() {
 	type argT struct {
 		cli.Helper
-		URL      string `cli:"*url" usage:"Console Url (required)"`
-		UserID   string `cli:"*user" usage:"User id (required)"`
-		Password string `cli:"*pass" usage:"User password (required)"`
-		SBOM     string `cli:"sbom" usage:"CycloneDX Json Filename"`
+		URL    string `cli:"*url" usage:"Console Url (required)"`
+		UserID string `cli:"*user" usage:"User id (required)"`
+		SBOM   string `cli:"sbom" usage:"CycloneDX Json Filename"`
 	}
 
 	os.Exit(cli.Run(new(argT), func(ctx *cli.Context) error {
 		argv := ctx.Argv().(*argT)
 
-		gatherEvidence(argv.URL, argv.UserID, argv.Password, argv.SBOM)
+		gatherEvidence(argv.URL, argv.UserID, argv.SBOM)
 		return nil
 	}))
 }
