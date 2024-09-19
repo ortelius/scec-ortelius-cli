@@ -145,26 +145,26 @@ func getSBOMFromImage(imageRef string) string {
 	return buf.String()
 }
 
-func getProvenanceFromImage(imageRef string) string {
+// func getProvenanceFromImage(imageRef string) string {
 
-	// Create a new context.
-	ctx := context.Background()
+// 	// Create a new context.
+// 	ctx := context.Background()
 
-	// Create a new image inspect client.
-	var inspectClient *imagetools.Printer
-	var err error
+// 	// Create a new image inspect client.
+// 	var inspectClient *imagetools.Printer
+// 	var err error
 
-	if inspectClient, err = imagetools.NewPrinter(ctx, imagetools.Opt{}, imageRef, "{{ json .Provenance }}"); err != nil {
-		fmt.Printf("Could not load Provenance from image %s: %v", imageRef, err)
-		return ""
-	}
+// 	if inspectClient, err = imagetools.NewPrinter(ctx, imagetools.Opt{}, imageRef, "{{ json .Provenance }}"); err != nil {
+// 		fmt.Printf("Could not load Provenance from image %s: %v", imageRef, err)
+// 		return ""
+// 	}
 
-	buf := new(bytes.Buffer)
-	inspectClient.Print(false, buf)
+// 	buf := new(bytes.Buffer)
+// 	inspectClient.Print(false, buf)
 
-	// Convert string to io.Reader
-	return buf.String()
-}
+// 	// Convert string to io.Reader
+// 	return buf.String()
+// }
 
 // resolveVars will resolve the ${var} with a value from the component.toml or environment variables
 func resolveVars(val string, data map[interface{}]interface{}) string {
@@ -589,7 +589,7 @@ func makeName(name string) (string, *model.Domain) {
 }
 
 // gatherEvidence collects data from the component.toml and git repo for the component version
-func gatherEvidence(URL string, userID string, sbom string) {
+func gatherEvidence(msapiURL string, userID string, sbom string) {
 
 	user := model.NewUser()
 	createTime := time.Now().UTC()
@@ -635,7 +635,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 	resp, err := client.R().
 		SetBody(compver).
 		SetResult(&res).
-		Post(URL + ":8080/msapi/compver")
+		Post(msapiURL + ":8080/msapi/compver")
 
 	fmt.Printf("%s=%v\n", resp, err)
 	fmt.Printf("compid=%s\n", res.Key)
@@ -650,7 +650,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post(URL + ":8081/msapi/sbom")
+				Post(msapiURL + ":8081/msapi/sbom")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
@@ -680,7 +680,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 			resp, err := client.R().
 				SetBody(sbom).
 				SetResult(&res).
-				Post(URL + ":8081/msapi/package")
+				Post(msapiURL + ":8081/msapi/package")
 
 			fmt.Printf("%s=%v\n", resp, err)
 			fmt.Printf("KEY=%s\n", res.Key)
@@ -708,7 +708,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 	resp, err = client.R().
 		SetBody(readme).
 		SetResult(&res).
-		Post(URL + ":8084/msapi/readme/" + compver.Key)
+		Post(msapiURL + ":8084/msapi/readme/" + compver.Key)
 
 	fmt.Printf("%s=%v\n", resp, err)
 	fmt.Printf("KEY=%s\n", res.Key)
@@ -717,7 +717,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 	resp, err = client.R().
 		SetBody(swagger).
 		SetResult(&res).
-		Post(URL + ":8084/msapi/swagger/" + compver.Key)
+		Post(msapiURL + ":8084/msapi/swagger/" + compver.Key)
 
 	fmt.Printf("%s=%v\n", resp, err)
 	fmt.Printf("KEY=%s\n", res.Key)
@@ -726,7 +726,7 @@ func gatherEvidence(URL string, userID string, sbom string) {
 	resp, err = client.R().
 		SetBody(license).
 		SetResult(&res).
-		Post(URL + ":8084/msapi/license/" + compver.Key)
+		Post(msapiURL + ":8084/msapi/license/" + compver.Key)
 
 	fmt.Printf("%s=%v\n", resp, err)
 	fmt.Printf("KEY=%s\n", res.Key)
