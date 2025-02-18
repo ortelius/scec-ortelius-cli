@@ -534,6 +534,8 @@ github.com/opencontainers/selinux v1.11.1/go.mod h1:E5dMC3VPuVvVHDYmi78qvhJp8+M5
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
 github.com/ortelius/scec-commons v0.1.46 h1:dAcI7m5b5LCoPyhLd0EMKRk48N1m6Gk8kLBzrbrWV2g=
 github.com/ortelius/scec-commons v0.1.46/go.mod h1:ARFb4gA+eT82LiPdZfxwv+EY9p5HKCD6FT0yNJYO8rY=
+github.com/ortelius/scec-commons v0.1.47 h1:v2trCn+Jvqfk8GhMyzaJc19PAzamhSVcxUvSKL8gbQo=
+github.com/ortelius/scec-commons v0.1.47/go.mod h1:b/pVrNN9+mx0NT/2JLTvo8jvLyJA3fK68pzO6fpRC4g=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pascaldekloe/goe v0.1.0/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pborman/indent v1.2.1 h1:lFiviAbISHv3Rf0jcuh489bi06hj98JsVMtIDZQb9yM=
