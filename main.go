@@ -26,9 +26,12 @@ import (
 )
 
 const (
-	LicenseFile int = 0 // LicenseFile is used to read the License file
-	SwaggerFile int = 1 // SwaggerFile is used to read the Swagger/OpenApi file
-	ReadmeFile  int = 2 // ReadmeFile is used to read the Readme file
+	// LicenseFile is used to read the License file
+	LicenseFile int = 0
+	// SwaggerFile is used to read the Swagger/OpenApi file
+	SwaggerFile int = 1
+	// ReadmeFile is used to read the Readme file
+	ReadmeFile int = 2
 )
 
 const (
