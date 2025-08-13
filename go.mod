@@ -3,7 +3,7 @@ module github.com/ortelius/scec-cli
 go 1.24.2
 
 require (
-	github.com/anchore/syft v1.30.0
+	github.com/anchore/syft v1.31.0
 	github.com/docker/buildx v0.26.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.47
