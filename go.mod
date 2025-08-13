@@ -3,7 +3,7 @@ module github.com/ortelius/scec-cli
 go 1.24.2
 
 require (
-	github.com/anchore/syft v1.30.0
+	github.com/anchore/syft v1.31.0
 	github.com/docker/buildx v0.26.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.47
@@ -27,10 +27,10 @@ require (
 	github.com/acobaugh/osrelease v0.1.0 // indirect
 	github.com/adrg/xdg v0.5.3 // indirect
 	github.com/anchore/archiver/v3 v3.5.3-0.20241210171143-5b1d8d1c7c51 // indirect
-	github.com/anchore/clio v0.0.0-20250715152405-a0fa658e5084 // indirect
+	github.com/anchore/clio v0.0.0-20250813004536-0f1602c2e31f // indirect
 	github.com/anchore/fangs v0.0.0-20250807225009-05843cec0e7b // indirect
 	github.com/anchore/go-homedir v0.0.0-20250319154043-c29668562e4d // indirect
-	github.com/anchore/go-logger v0.0.0-20250812005339-7b240df0b81c // indirect
+	github.com/anchore/go-logger v0.0.0-20250813181427-74728f89a619 // indirect
 	github.com/anchore/go-struct-converter v0.0.0-20250211213226-cce56d595160 // indirect
 	github.com/anchore/go-sync v0.0.0-20250714163430-add63db73ad1 // indirect
 	github.com/anchore/packageurl-go v0.1.1-0.20250220190351-d62adb6e1115 // indirect
