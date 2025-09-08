@@ -831,6 +831,8 @@ github.com/docker/buildx v0.26.1 h1:nlj3bVhHK9fV7g6floRvGhPcR0u2hxCPMmObCS1ZKL4=
 github.com/docker/buildx v0.26.1/go.mod h1:oxMC30cSHPaCCkY2j+EqN7uxFikjSzVC0c44lo9b4Fo=
 github.com/docker/buildx v0.27.0 h1:8QQOqIAMpDItzlmYO5ua/AR2Qttu07hHeOeOxPSbUR8=
 github.com/docker/buildx v0.27.0/go.mod h1:omZ9N6owYkRoAN79fq+Dfa0RwfR3iblCGuUyThovCpM=
+github.com/docker/buildx v0.28.0 h1:ZnrVsZ/qQwSOQ4Fx3IgXjiurAwvocaF1YUaPbIXD89E=
+github.com/docker/buildx v0.28.0/go.mod h1:nLwx58w7xrQbLVSXiWiHpkVhY4ou4ci/hYomc139Vjk=
 github.com/docker/cli v28.3.3+incompatible h1:fp9ZHAr1WWPGdIWBM1b3zLtgCF+83gRdVMTJsUeiyAo=
 github.com/docker/cli v28.3.3+incompatible/go.mod h1:JLrzqnKDaYBop7H2jaqPtU4hHvMKP+vjCwu2uszcLI8=
 github.com/docker/distribution v2.8.3+incompatible h1:AtKxIZ36LoNK51+Z6RpzLpddBirtxJnzDrHLEKxTAYk=
@@ -1243,6 +1245,8 @@ github.com/mkideal/expr v0.1.0/go.mod h1:vL1DsSb87ZtU6IEjOtUfxw98z0FQbzS8xlGtnPk
 github.com/mkideal/pkg v0.1.3/go.mod h1:u/enAxPeRcYSsxtu1NUifWSeOTU/31VsCaOPg54SMJ4=
 github.com/moby/buildkit v0.23.2 h1:gt/dkfcpgTXKx+B9I310kV767hhVqTvEyxGgI3mqsGQ=
 github.com/moby/buildkit v0.23.2/go.mod h1:iEjAfPQKIuO+8y6OcInInvzqTMiKMbb2RdJz1K/95a0=
+github.com/moby/buildkit v0.24.0 h1:qYfTl7W1SIJzWDIDCcPT8FboHIZCYfi++wvySi3eyFE=
+github.com/moby/buildkit v0.24.0/go.mod h1:4qovICAdR2H4C7+EGMRva5zgHW1gyhT4/flHI7F5F9k=
 github.com/moby/docker-image-spec v1.3.1 h1:jMKff3w6PgbfSa69GfNg+zN/XLhfXJGnEx3Nl2EsFP0=
 github.com/moby/docker-image-spec v1.3.1/go.mod h1:eKmb5VW8vQEh/BAr2yvVNvuiJuY6UIocYsFu/DxxRpo=
 github.com/moby/locker v1.0.1 h1:fOXqR41zeveg4fFODix+1Ch4mj/gT0NE1XJbp/epuBg=
@@ -1290,6 +1294,8 @@ github.com/opencontainers/selinux v1.12.0/go.mod h1:BTPX+bjVbWGXw7ZZWUbdENt8w0ht
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
 github.com/ortelius/scec-commons v0.1.47 h1:v2trCn+Jvqfk8GhMyzaJc19PAzamhSVcxUvSKL8gbQo=
 github.com/ortelius/scec-commons v0.1.47/go.mod h1:b/pVrNN9+mx0NT/2JLTvo8jvLyJA3fK68pzO6fpRC4g=
+github.com/ortelius/scec-commons v0.1.48 h1:/bPjHcRvPy06a2I6mtmb8pdVgQr1U1UCxzoM2IDmxWM=
+github.com/ortelius/scec-commons v0.1.48/go.mod h1:x+i4LSxPdZivzX0jYxSYVChGJuR72LOJFRBRc8Ri5wU=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pascaldekloe/goe v0.1.0/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pborman/indent v1.2.1 h1:lFiviAbISHv3Rf0jcuh489bi06hj98JsVMtIDZQb9yM=
