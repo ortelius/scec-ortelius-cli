@@ -4,9 +4,9 @@ go 1.24.2
 
 require (
 	github.com/anchore/syft v1.32.0
-	github.com/docker/buildx v0.27.0
+	github.com/docker/buildx v0.28.0
 	github.com/mkideal/cli v0.2.7
-	github.com/ortelius/scec-commons v0.1.47
+	github.com/ortelius/scec-commons v0.1.48
 	github.com/pelletier/go-toml/v2 v2.2.4
 )
 
@@ -94,7 +94,7 @@ require (
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
-	github.com/moby/buildkit v0.23.2 // indirect
+	github.com/moby/buildkit v0.24.0 // indirect
 	github.com/moby/locker v1.0.1 // indirect
 	github.com/nwaples/rardecode v1.1.3 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
