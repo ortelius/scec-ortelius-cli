@@ -3,7 +3,7 @@ module github.com/ortelius/scec-cli
 go 1.24.2
 
 require (
-	github.com/anchore/syft v1.34.2
+	github.com/anchore/syft v1.36.0
 	github.com/docker/buildx v0.29.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.48
@@ -78,7 +78,7 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.10 // indirect
-	github.com/github/go-spdx/v2 v2.3.3 // indirect
+	github.com/github/go-spdx/v2 v2.3.4 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.2 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect

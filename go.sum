@@ -716,6 +716,8 @@ github.com/anchore/syft v1.34.1 h1:OdM9guARidtMPBL6ju83vV/GauZ6Tb6UwhFlLyLHbNw=
 github.com/anchore/syft v1.34.1/go.mod h1:J9fOxYe2o9I5sML6ntNF2uiPYZ+vwcWVPM26tCSyf3M=
 github.com/anchore/syft v1.34.2 h1:q7Zr5I624MaU20wfwzidTtHi8nqS8MzrJGGcIvEAWsI=
 github.com/anchore/syft v1.34.2/go.mod h1:J9fOxYe2o9I5sML6ntNF2uiPYZ+vwcWVPM26tCSyf3M=
+github.com/anchore/syft v1.36.0 h1:vmrQz/eCPEdniHi2XRqEXxpvO3Q3wHL9o+YcE45XtUI=
+github.com/anchore/syft v1.36.0/go.mod h1:DdJMDHhI2V7pOjC/5FL98BKbG2DkbIT5zYmig6AORdU=
 github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883/go.mod h1:rCTlJbsFo29Kk6CurOXKm700vrz8f0KW0JNfpkRJY/8=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.2.0 h1:ukwgCxwYrmACq68yiUqwIWnGY0cTPox/M94sVwToPjQ=
@@ -962,6 +964,8 @@ github.com/gabriel-vasile/mimetype v1.4.10/go.mod h1:d+9Oxyo1wTzWdyVUPMmXFvp4F9t
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/github/go-spdx/v2 v2.3.3 h1:QI7evnHWEfWkT54eJwkoV/f3a0xD3gLlnVmT5wQG6LE=
 github.com/github/go-spdx/v2 v2.3.3/go.mod h1:2ZxKsOhvBp+OYBDlsGnUMcchLeo2mrpEBn2L1C+U3IQ=
+github.com/github/go-spdx/v2 v2.3.4 h1:6VNAsYWvQge+SOeoubTlH81MY21d5uekXNIRGfXMNXo=
+github.com/github/go-spdx/v2 v2.3.4/go.mod h1:7LYNCshU2Gj17qZ0heJ5CQUKWWmpd98K7o93K8fJSMk=
 github.com/go-fonts/dejavu v0.1.0/go.mod h1:4Wt4I4OU2Nq9asgDCteaAaWZOV24E+0/Pwo0gppep4g=
 github.com/go-fonts/latin-modern v0.2.0/go.mod h1:rQVLdDMK+mK1xscDwsqM5J8U2jrRa3T0ecnM9pNujks=
 github.com/go-fonts/liberation v0.1.1/go.mod h1:K6qoJYypsmfVjWg8KOVDQhLc8UDgIK2HYqyqAO9z7GY=
