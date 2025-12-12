@@ -3,8 +3,8 @@ module github.com/ortelius/scec-cli
 go 1.24.2
 
 require (
-	github.com/anchore/syft v1.37.0
-	github.com/docker/buildx v0.29.1
+	github.com/anchore/syft v1.38.2
+	github.com/docker/buildx v0.30.1
 	github.com/mkideal/cli v0.2.7
 	github.com/ortelius/scec-commons v0.1.48
 	github.com/pelletier/go-toml/v2 v2.2.4
@@ -173,7 +173,7 @@ require (
 
 require (
 	github.com/araddon/dateparse v0.0.0-20210429162001-6b43995a97de
-	github.com/go-resty/resty/v2 v2.16.5
+	github.com/go-resty/resty/v2 v2.17.0
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
